@@ -6,6 +6,8 @@
 
 void WINAPI OutputDebugStringAHook(LPCSTR lpOutputString)
 {
+    HookManager::CallOriginal(OutputDebugStringAHook, lpOutputString);
+    
     if (strcmp(lpOutputString, "\n") == 0) return; // filter out empty lines
     glob::PipeServer->sendMessage(lpOutputString, PipeMessageType::Log);
 }
