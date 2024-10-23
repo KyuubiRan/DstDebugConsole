@@ -4,3 +4,7 @@
 /App/bin/
 /LibConsole/Debug
 /LibConsole/x64
+/LibConsole/LibConsole.vcxproj.filters
+/LibConsole/LibConsole.vcxproj.user
+/DstConsole.sln.DotSettings.user
+/global.json
