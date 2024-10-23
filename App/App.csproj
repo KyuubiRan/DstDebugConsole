@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <Platform>windows</Platform>
+        <Platforms>x64</Platforms>
+        <Configurations>Debug;Release</Configurations>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ClickableTransparentOverlay" Version="11.0.1" />
+      <PackageReference Include="FoxTail.Common" Version="0.0.9" />
+      <PackageReference Include="FoxTail.Extensions" Version="0.0.9" />
+      <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="System.Management" Version="8.0.0" />
+      <PackageReference Include="System.Memory" Version="4.5.5" />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="AppRes.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>AppRes.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="AppRes.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AppRes.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

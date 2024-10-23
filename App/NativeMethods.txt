@@ -1,0 +1,10 @@
+GetModuleHandle
+OpenProcess
+ReadProcessMemory
+WriteProcessMemory
+VirtualAllocEx
+VirtualFreeEx
+CreateRemoteThread
+EnumDisplaySettings
+GetProcAddress
+WaitForSingleObject
