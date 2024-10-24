@@ -8,3 +8,6 @@
 /Console/Console.vcxproj.user
 /DstConsole.sln.DotSettings.user
 /global.json
+/Debug/
+/Release/
+/x64/
