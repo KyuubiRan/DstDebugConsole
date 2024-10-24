@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{26BE3383-3614-46B7-9184-E8B281BBA566}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibConsole", "LibConsole\LibConsole.vcxproj", "{F0982DBD-10F4-462A-BCF4-2BBA44353C70}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console", "Console\Console.vcxproj", "{2CC037F3-7060-4FCE-971F-D7BC68283930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{26BE3383-3614-46B7-9184-E8B281BBA566}.Debug|x64.Build.0 = Debug|x64
 		{26BE3383-3614-46B7-9184-E8B281BBA566}.Release|x64.ActiveCfg = Release|x64
 		{26BE3383-3614-46B7-9184-E8B281BBA566}.Release|x64.Build.0 = Release|x64
-		{F0982DBD-10F4-462A-BCF4-2BBA44353C70}.Debug|x64.ActiveCfg = Debug|x64
-		{F0982DBD-10F4-462A-BCF4-2BBA44353C70}.Debug|x64.Build.0 = Debug|x64
-		{F0982DBD-10F4-462A-BCF4-2BBA44353C70}.Release|x64.ActiveCfg = Release|x64
-		{F0982DBD-10F4-462A-BCF4-2BBA44353C70}.Release|x64.Build.0 = Release|x64
+		{2CC037F3-7060-4FCE-971F-D7BC68283930}.Debug|x64.ActiveCfg = Debug|x64
+		{2CC037F3-7060-4FCE-971F-D7BC68283930}.Debug|x64.Build.0 = Debug|x64
+		{2CC037F3-7060-4FCE-971F-D7BC68283930}.Release|x64.ActiveCfg = Release|x64
+		{2CC037F3-7060-4FCE-971F-D7BC68283930}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

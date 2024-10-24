@@ -2,6 +2,9 @@
 
 #include <cstdio>
 #include <Windows.h>
+
+#include "glob.h"
+#include "HookManager.hpp"
 #include "init.h"
 
 inline void Run(HMODULE* hModule)
@@ -17,4 +20,10 @@ inline void Run(HMODULE* hModule)
     // freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
     
     app::Init();
+}
+
+inline void Stop()
+{
+    // HookManager::UninstallAll();
+    glob::PipeServer->stop();
 }

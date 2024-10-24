@@ -2,9 +2,9 @@
 /.idea/
 /App/obj/
 /App/bin/
-/LibConsole/Debug
-/LibConsole/x64
-/LibConsole/LibConsole.vcxproj.filters
-/LibConsole/LibConsole.vcxproj.user
+/Console/Debug
+/Console/x64
+/Console/Console.vcxproj.filters
+/Console/Console.vcxproj.user
 /DstConsole.sln.DotSettings.user
 /global.json

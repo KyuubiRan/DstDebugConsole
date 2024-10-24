@@ -6,6 +6,7 @@ namespace App.Util;
 public static class ManagedConsole
 {
     private static Dictionary<uint, ConsoleWindow> _windows = new();
+    public static IReadOnlyDictionary<uint, ConsoleWindow> ManagedWindows => _windows;
 
     public static void MaskConsoleInvalid(uint pid)
     {
