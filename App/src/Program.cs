@@ -5,7 +5,6 @@
 using App.Ui;
 using App.Util;
 
-
 var watchedProcesses = new List<string>
     { "dontstarve_steam_x64.exe", "dontstarve_dedicated_server_nullrenderer_x64.exe" };
 

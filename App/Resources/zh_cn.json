@@ -6,13 +6,13 @@
   "Language": "语言",
   "Exit": "退出",
   "Status": "状态",
-  "Alive": "在线",
-  "Dead": "离线",
+  "Online": "在线",
+  "Offline": "离线",
   "Version": "版本：{0}",
   "Author": "作者：",
   "ProjectUrl": "项目地址：",
   "FriendlyLinks": "友情链接",
-  "Huohuo": "藿藿",
+  "Huohuo": "【崩坏：星穹铁道】藿藿",
   "MaxConsoleLines": "控制台最大行数",
   "WindowTransparency": "窗口透明度",
   "Type": "类型",
@@ -21,5 +21,10 @@
   "Show": "显示",
   "ProcessName": "进程名称",
   "Debug": "调试",
-  "Hide": "隐藏"
+  "Hide": "隐藏",
+  "ShowOnline": "显示在线",
+  "ShowOffline": "显示离线",
+  "ClearOffline": "清除离线",
+  "ClearOfflineDesc": "清除离线的控制台实例（管道断开）。",
+  "AuthorsMods": "作者的模组"
 }

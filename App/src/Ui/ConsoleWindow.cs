@@ -50,7 +50,7 @@ public class ConsoleWindow(ProcessWatcher.ProcessEventArgs eventArgs) : BaseWind
             }
 
             ImGui.SameLine();
-            if (ImGui.Button("Hide"))
+            if (ImGui.Button(Translator.GetTranslation("Hide")))
             {
                 IsShow = false;
             }
@@ -58,10 +58,8 @@ public class ConsoleWindow(ProcessWatcher.ProcessEventArgs eventArgs) : BaseWind
             ImGui.SameLine(ImGui.GetWindowWidth() - 45);
             // ImGui.Text("Status:");
             // ImGui.SameLine();
-            if (IsAlive)
-                ImGui.TextColored(new Vector4(0, 1, 0, 1), Translator.GetTranslation("Alive"));
-            else
-                ImGui.TextColored(new Vector4(1, 0, 0, 1), Translator.GetTranslation("Dead"));
+            ImGui.TextColored(IsAlive ? Colors.StatusOnline : Colors.StatusOffline,
+                Translator.GetTranslation(IsAlive ? "Online" : "Offline"));
 
             ImGui.BeginChild("Messages", new Vector2(0, 0),
                 ImGuiChildFlags.Border | ImGuiChildFlags.NavFlattened);
@@ -75,7 +73,7 @@ public class ConsoleWindow(ProcessWatcher.ProcessEventArgs eventArgs) : BaseWind
                     var isLuaError = message.Contains("LUA ERROR stack traceback:");
 
                     if (isLuaError)
-                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1, 0, 0, 1));
+                        ImGui.PushStyleColor(ImGuiCol.Text, Colors.Error);
                     ImGui.TextWrapped(message);
 
                     if (isLuaError)

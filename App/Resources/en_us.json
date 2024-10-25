@@ -5,5 +5,11 @@
   "FriendlyLinks": "Friendly links",
   "MaxConsoleLines": "Max console lines",
   "WindowTransparency": "Window transparency",
-  "ProcessName": "Process name"
+  "Huohuo": "[Honkai: star rail] Huohuo",
+  "ProcessName": "Process name",
+  "ShowOnline": "Show online",
+  "ShowOffline": "Show offline",
+  "ClearOffline": "Clear offline",
+  "ClearOfflineDesc": "Clear console instances that are offline (Pipe disconnected).",
+  "AuthorsMods" : "Author's mods"
 }

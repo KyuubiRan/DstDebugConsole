@@ -13,7 +13,7 @@ public static class ManagedConsole
         if (_windows.TryGetValue(pid, out var window))
         {
             window.IsAlive = false;
-            _windows.Remove(pid);
+            // _windows.Remove(pid);
             PipeManager.StopListeningForProcess(pid);
         }
     }
@@ -21,6 +21,17 @@ public static class ManagedConsole
     public static void DeleteWindow(uint pid)
     {
         if (_windows.TryGetValue(pid, out var window))
+        {
+            window.IsShow = false;
+            _windows.Remove(pid);
+            PipeManager.StopListeningForProcess(pid);
+        }
+    }
+    
+    public static void DeleteOfflineWindows()
+    {
+        var offlineWindows = _windows.Where(w => !w.Value.IsAlive).ToList();
+        foreach (var (pid, window) in offlineWindows)
         {
             window.IsShow = false;
             _windows.Remove(pid);

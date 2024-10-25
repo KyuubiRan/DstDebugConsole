@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Reflection;
 using App.Communication;
 using App.Util;
 using FoxTail.Extensions;
@@ -49,6 +48,11 @@ public class MainWindow : BaseWindow
         ImGuiHelper.ClickableLink("https://github.com/KyuubiRan", "KyuubiRan");
         ImGui.Text(Translator.GetTranslation("ProjectUrl"));
         ImGuiHelper.ClickableLink("https://github.com/KyuubiRan/DstDebugConsole", "Github");
+
+        ImGui.NewLine();
+        ImGui.Text(Translator.GetTranslation("FriendlyLinks") + " - " + Translator.GetTranslation("AuthorsMods"));
+        ImGuiHelper.ClickableLink("https://steamcommunity.com/sharedfiles/filedetails/?id=3347362893",
+            Translator.GetTranslation("Huohuo"), false);
     }
 
     private void RenderSettingsPage()
@@ -67,7 +71,7 @@ public class MainWindow : BaseWindow
         // Quit Button
         var contentRegion = ImGui.GetContentRegionAvail();
         ImGui.SetCursorPosY(ImGui.GetContentRegionMax().Y - 30);
-        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(1, 0, 0, 1));
+        ImGui.PushStyleColor(ImGuiCol.Button, Colors.Error);
         if (ImGui.Button(Translator.GetTranslation("Exit"), contentRegion with { Y = 30 }))
         {
             ConfigManager.Save();
@@ -76,9 +80,6 @@ public class MainWindow : BaseWindow
 
         ImGui.PopStyleColor();
     }
-
-    private static readonly Vector4 AliveColor = new Vector4(0, 1, 0, 1);
-    private static readonly Vector4 DeadColor = new Vector4(1, 0, 0, 1);
 
     private void RenderConsoleWindowItem(ConsoleWindow window)
     {
@@ -89,8 +90,8 @@ public class MainWindow : BaseWindow
         ImGui.Checkbox("##Show", ref window.IsShow);
 
         ImGui.TableNextColumn();
-        ImGui.TextColored(window.IsAlive ? AliveColor : DeadColor,
-            Translator.GetTranslation(window.IsAlive ? "Alive" : "Dead"));
+        ImGui.TextColored(window.IsAlive ? Colors.StatusOnline : Colors.StatusOffline,
+            Translator.GetTranslation(window.IsAlive ? "Online" : "Offline"));
 
         ImGui.TableNextColumn();
         ImGui.Text(window.ProcessName);
@@ -101,19 +102,38 @@ public class MainWindow : BaseWindow
         ImGui.PopID();
     }
 
+    private bool _showOnline = true;
+    private bool _showOffline = true;
+
     private void RenderMainPage()
     {
+        ImGui.Checkbox(Translator.GetTranslation("ShowOnline"), ref _showOnline);
+        ImGui.SameLine();
+        ImGui.Checkbox(Translator.GetTranslation("ShowOffline"), ref _showOffline);
+        var txt = Translator.GetTranslation("ClearOffline");
+        ImGui.SameLine(ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize(txt).X - 25);
+        if (ImGui.Button(txt))
+            ManagedConsole.DeleteOfflineWindows();
+        ImGuiHelper.HoveredTooltip(Translator.GetTranslation("ClearOfflineDesc"));
+
+
         if (ImGui.BeginTable("ConsoleWindows", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
         {
-            ImGui.TableSetupColumn(Translator.GetTranslation("Show"), ImGuiTableColumnFlags.WidthFixed, 10f);
-            ImGui.TableSetupColumn(Translator.GetTranslation("Status"), ImGuiTableColumnFlags.WidthFixed, 10f);
-            ImGui.TableSetupColumn(Translator.GetTranslation("ProcessName"), ImGuiTableColumnFlags.WidthStretch, 50f);
-            ImGui.TableSetupColumn(Translator.GetTranslation("Pid"), ImGuiTableColumnFlags.WidthFixed, 15f);
+            ImGui.TableSetupColumn(Translator.GetTranslation("Show"), ImGuiTableColumnFlags.None, 5f);
+            ImGui.TableSetupColumn(Translator.GetTranslation("Status"), ImGuiTableColumnFlags.None, 5f);
+            ImGui.TableSetupColumn(Translator.GetTranslation("ProcessName"), ImGuiTableColumnFlags.None, 50f);
+            ImGui.TableSetupColumn(Translator.GetTranslation("Pid"), ImGuiTableColumnFlags.None, 10f);
             ImGui.TableHeadersRow();
 
-            foreach (var wind in ManagedConsole.ManagedWindows.OrderByDescending(x => x.Value.IsAlive))
+            var filter = ManagedConsole.ManagedWindows.Values;
+            if (!_showOnline)
+                filter = filter.Where(x => !x.IsAlive);
+            if (!_showOffline)
+                filter = filter.Where(x => x.IsAlive);
+
+            foreach (var wind in filter.OrderByDescending(x => x.IsAlive))
             {
-                RenderConsoleWindowItem(wind.Value);
+                RenderConsoleWindowItem(wind);
             }
 
             ImGui.EndTable();
@@ -135,7 +155,7 @@ public class MainWindow : BaseWindow
                 .Also(x => x.IsAlive = false);
         }
 
-       
+
         if (ImGui.Button("Push Messages"))
         {
             foreach (var (_, window) in ManagedConsole.ManagedWindows)

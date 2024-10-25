@@ -1,8 +1,6 @@
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Numerics;
 using ImGuiNET;
-using Vortice.Mathematics;
 
 namespace App.Ui;
 
@@ -29,7 +27,7 @@ public static class ImGuiHelper
         if (sameline)
             ImGui.SameLine();
 
-        ImGui.TextColored(new Vector4(0, 0.5f, 1, 1), text);
+        ImGui.TextColored(Colors.Link, text);
         if (ImGui.IsItemHovered())
         {
             ImGui.BeginTooltip();
@@ -43,5 +41,11 @@ public static class ImGuiHelper
                 Process.Start("explorer.exe", link);
             }
         }
+    }
+    
+    public static void DrawLine(Vector2 start, Vector2 end, Vector4 color)
+    {
+        var drawList = ImGui.GetWindowDrawList();
+        drawList.AddLine(start, end, ImGui.GetColorU32(color));
     }
 }
