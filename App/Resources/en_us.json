@@ -1,0 +1,9 @@
+{
+  "Author": "Author:",
+  "Version": "Version: {0}",
+  "ProjectUrl": "Project url: ",
+  "FriendlyLinks": "Friendly links",
+  "MaxConsoleLines": "Max console lines",
+  "WindowTransparency": "Window transparency",
+  "ProcessName": "Process name"
+}

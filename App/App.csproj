@@ -20,6 +20,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Management" Version="8.0.0" />
       <PackageReference Include="System.Memory" Version="4.5.5" />
       <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
@@ -37,6 +38,15 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>AppRes.resx</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\en_us.json" />
+      <Resource Include="Resources\en_us.json" />
+      <None Remove="Resources\zh_cn.json" />
+      <Resource Include="Resources\zh_cn.json" />
+      <None Remove="Resources\hsr_zh_cn.ttf" />
+      <Resource Include="Resources\hsr_zh_cn.ttf" />
     </ItemGroup>
 
 </Project>

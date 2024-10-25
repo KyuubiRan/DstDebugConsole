@@ -70,6 +70,8 @@ public class MainOverlay : Overlay
 
     protected override void Render()
     {
+        ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0, 0, 0, ConfigManager.WindowTransparency));
         OnRender?.Invoke();
+        ImGui.PopStyleColor();
     }
 }

@@ -121,4 +121,10 @@
   <data name="FontFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\hsr_zh_cn.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="lang_zh_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\zh_cn.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="lang_en_us" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\en_us.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

@@ -19,6 +19,10 @@ public class PipeMessage
     public uint Size { get; set; } // Data size
     public string? Data { get; set; }
 
+    public PipeMessage()
+    {
+    }
+    
     public PipeMessage(byte[] buffer)
     {
         MessageType = (Type)buffer[0];

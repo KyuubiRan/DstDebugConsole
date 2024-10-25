@@ -27,7 +27,7 @@ public static class ManagedConsole
             PipeManager.StopListeningForProcess(pid);
         }
     }
-    
+
     public static void CreateWindow(ProcessWatcher.ProcessEventArgs eventArgs)
     {
         var ret = DllInjector.Inject(eventArgs.ProcessId, "LibConsole.dll");
@@ -36,10 +36,25 @@ public static class ManagedConsole
             Console.WriteLine("Inject failed: " + ret);
             return;
         }
-        
+
         var window = new ConsoleWindow(eventArgs);
         _windows.Add(eventArgs.ProcessId, window);
         PipeManager.ListenForProcess(eventArgs.ProcessId, message => window.PushMessage(message));
         Console.WriteLine($"Created console window for PID={eventArgs.ProcessId}");
     }
+
+#if DEBUG
+    public static ConsoleWindow CreateDebugWindow(bool isClient = true)
+    {
+        var window = new ConsoleWindow(new ProcessWatcher.ProcessEventArgs(isClient ? "Client.exe" : "Server.exe",
+            (uint)Random.Shared.Next(32000), true))
+        {
+            IsDebugAlloc = true
+        };
+        _windows.Add(window.ProcessId, window);
+        Console.WriteLine($"Created debug console window for PID={window.ProcessId}");
+
+        return window;
+    }
+#endif
 }
