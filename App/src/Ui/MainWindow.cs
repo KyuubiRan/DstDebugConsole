@@ -199,23 +199,23 @@ public class MainWindow : BaseWindow
     {
         ImGui.BeginChild("PageContent", new Vector2(0, 0), ImGuiChildFlags.Border);
 
-        switch (_currentPage)
-        {
-            case 0:
-                RenderMainPage();
-                break;
-            case 1:
-                RenderSettingsPage();
-                break;
-            case 2:
-                RenderAboutPage();
-                break;
 #if DEBUG
-            case 3:
-                RenderDebugPage();
-                break;
+        if (_currentPage == Pages.Length - 1)
+            RenderDebugPage();
+        else
 #endif
-        }
+            switch (_currentPage)
+            {
+                case 0:
+                    RenderMainPage();
+                    break;
+                case 1:
+                    RenderSettingsPage();
+                    break;
+                case 2:
+                    RenderAboutPage();
+                    break;
+            }
 
         ImGui.EndChild();
     }
